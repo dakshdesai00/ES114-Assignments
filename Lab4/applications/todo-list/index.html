@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List with PyScript</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.2.3/core.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        input,
+        button {
+            font-size: 16px;
+            padding: 5px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            padding: 10px;
+            border: 1px solid #ddd;
+            margin: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>To-Do List (PyScript)</h1>
+
+    <input type="text" id="taskInput" placeholder="Enter a new task">
+    <button py-click="add_task">Add Task</button>
+
+    <ul id="taskList"></ul>
+
+    <py-script>
+        from js import document, console
+
+        def add_task(event):
+            task_text = document.getElementById("taskInput").value.strip()
+            if not task_text:
+                return
+
+            task_list = document.getElementById("taskList")
+            li = document.createElement("li")
+            task_span = document.createElement("span")
+            task_span.innerText = task_text
+            complete_btn = document.createElement("button")
+            complete_btn.innerText = "✔"
+            complete_btn.onclick = lambda e: task_span.classList.toggle("completed")
+            delete_btn = document.createElement("button")
+            delete_btn.innerText = "❌"
+            delete_btn.onclick = lambda e: task_list.removeChild(li)
+            li.appendChild(task_span)
+            li.appendChild(complete_btn)
+            li.appendChild(delete_btn)
+            task_list.appendChild(li)
+            document.getElementById("taskInput").value = ""
+
+    </py-script>
+
+</body>
+
+</html>

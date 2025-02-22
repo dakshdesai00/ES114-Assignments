@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Python Editor</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.2.3/core.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+
+        textarea {
+            width: 90%;
+            height: 200px;
+            font-size: 16px;
+            font-family: monospace;
+        }
+
+        button {
+            margin: 10px;
+            padding: 10px;
+            font-size: 16px;
+        }
+
+        .console {
+            background: black;
+            color: white;
+            padding: 10px;
+            height: 150px;
+            overflow-y: auto;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+
+        .input-field {
+            width: 90%;
+            padding: 10px;
+            font-size: 16px;
+            font-family: monospace;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Online Python Editor</h1>
+    <textarea id="code" placeholder="Write your Python code here...">print("Hello, PyScript!")</textarea>
+    <br>
+    <button py-click="runCode">Run Code</button>
+
+    <h3>Console Output:</h3>
+    <div class="console" id="output"></div>
+    <input type="text" id="console_input" class="input-field" placeholder="Enter your input here..."
+        style="display:none;">
+    <button id="submit_input" style="display:none;" py-click="submitInput">Submit Input</button>
+
+    <script type="py">
+        from pyodide.ffi import to_js
+        import js
+
+        input_value = ""
+
+        def runCode(event):
+            global input_value
+            code = js.document.getElementById("code").value
+            output_div = js.document.getElementById("output")
+            console_input = js.document.getElementById("console_input")
+            submit_input = js.document.getElementById("submit_input")
+            output_div.innerText = ""  # Clear previous output
+
+            def custom_input(prompt=None):
+                output_div.innerText += (prompt or "") + "\n"
+                console_input.style.display = "block"
+                submit_input.style.display = "block"
+                js.console_input.focus()
+                return input_value
+
+            def custom_print(*args):
+                output_div.innerText += " ".join(map(str, args)) + "\n"
+
+            try:
+                exec(code, {"print": custom_print, "input": custom_input})
+            except Exception as e:
+                output_div.innerText = f"Error: {e}"
+
+        def submitInput(event):
+            global input_value
+            input_value = js.document.getElementById("console_input").value
+            js.document.getElementById("console_input").style.display = "none"
+            js.document.getElementById("submit_input").style.display = "none"
+            runCode(None)
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Introduction and Basics of Pyscipt</title>
+    <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.3/core.css">
+    <script type="module" src="https://pyscript.net/releases/2025.2.3/core.js"></script>
+</head>
+
+<body>
+    <h1>Introduction and Basics of Pyscipt</h1>
+    <!-- Basic Hello World -->
+    <script type="py">
+        print("Hello, World!")
+    </script>
+    <br />
+    <!-- Basic variables and showing output-->
+     <div id="basicMath"></div>
+    <script type="py">
+            from pyscript import document
+            a = 1
+            b = 2
+            c = a + b
+            print(f"{a} + {b} = {c}") # Output on console: 1 + 2 = 3
+            document.getElementById("basicMath").innerText = f"{a} + {b} = {c}" # Output on webpage: 1 + 2 = 3
+        </script>
+    <br />
+    <!-- Basic user input output using functions and event handlers-->
+    <input type="text" id="name" placeholder="Enter your name:" />
+    <button py-click="printName">Print Name</button> <!-- Triggers printName function -->
+    <div id="greet"></div>
+    <script type="py">
+        def printName(event):
+            name = document.querySelector("#name").value
+            greet = f"Hello, {name}!"
+            document.getElementById("greet").innerText = greet
+    </script>
+    <br />
+    <!-- Using external files and loops -->
+    <input type="text" id="string" placeholder="Type your string here..." />
+    <button py-click="printEachChar">Print each character in new line</button>
+    <div id="output"></div>
+    <script type="py" src="./main.py" config="./pyscript.json"></script> <!-- Using main.py file and dependecies from pyscript.json -->
+    <br />
+
+    <h2>Some Basic Use Cases</h2>
+
+    <!-- Basic Use Cases -->
+    <h3>Check Even or Odd</h3>
+    <input type="text" id="num" placeholder="Enter a number" />
+    <button py-click="checkEvenOdd">Check Even or Odd</button>
+    <div id="evenOdd"></div>
+    <script type="py" src="./checkevenodd.py" config="./pyscript.json"></script>
+    <br />
+    <!-- Basic Use Cases -->
+    <h3>Check Prime Number</h3>
+    <input type="text" id="num-prime" placeholder="Enter a number" />
+    <button py-click="checkPrime">Check Prime Number</button>
+    <div id="prime"></div>
+    <script type="py" src="./checkprime.py" config="./pyscript.json"></script>
+    <br />
+</body>
+
+</html>
