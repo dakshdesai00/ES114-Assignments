@@ -45,7 +45,9 @@ PyScript provides several key features:
 </script>
 ```
 
-This is a simple script that prints “Hello, World!” in browser console.
+This is a simple code to print **"Hello, World!"**.  
+Here we use the `<script type="py">` tag to define a Python script in an HTML document. Thereafter, we can write our required code in Python, which in this case is `print("Hello, World!")`. Once the Python code is finished, use the closing tag `</script>`. This is used in **PyScript** to execute the Python codes written inside an HTML document.
+
 
 ![Hello World](helloworld.png)
 
@@ -61,7 +63,9 @@ This is a simple script that prints “Hello, World!” in browser console.
 </script>
 ```
 
-This code prints a simple output on the webpage. The `document` object allows Python to interact with the HTML DOM and update content dynamically.
+This code prints a simple output on webpage.
+Just like previous example we use the PyScript tag to write a python code inside HTML document. We import document from the PyScript  which allows Python to interact with the HTML Document Object Model (DOM).  It enables Python code to manipulate HTML elements, read values, and update the content dynamically.
+
 
 ![Dom Rendering](1+2=3.png)
 
@@ -81,7 +85,9 @@ This code prints a simple output on the webpage. The `document` object allows Py
 </script>
 ```
 
-This code takes user input from a text field, processes it using PyScript, and dynamically displays a greeting message.
+This code will take user input from a text field, process it with Python using PyScript, and display a greeting message dynamically.
+The user input box allows users to enter their name. `Button (<button>)` When clicked, triggers the printName function via `py-click="printName" `(PyScript’s event handling). For the output display the empty `<div> `gets updated with the greeting message. Using PyScript we have written a python function alongwith the HTML which will retrieve the text entered in the input box using document.querySelector("#name").value. Just like the previous example document will update the corresponding webpage.
+
 
 ![Greating](greeting.png)
 
@@ -94,6 +100,8 @@ This code takes user input from a text field, processes it using PyScript, and d
 
 <script type="py" src="./main.py"></script>
 ```
+
+`<script type="py" src="./main.py"></script>` -> This line of code is used to include an external Python file in the HTML document. The external file `main.py` contains the Python code that will be executed when the button is clicked. The `printEachChar` function defined in `main.py` reads the input text, iterates over each character, and displays it on a new line in the output div.
 
 **`main.py` (External Script):**
 
@@ -110,7 +118,6 @@ def printEachChar(event):
         output_div.innerText += c + "\n"
 ```
 
-This code takes user input and prints each character on a new line using a loop.
 
 ![Each char](probablity.png)
 
@@ -291,3 +298,11 @@ As PyScript matures, we can expect improved performance, better library support,
 - [HTML Documentation](https://developer.mozilla.org/en-US/docs/Web/HTML)
 - [WebAssembly](https://webassembly.org/)
 - [Pyodide](https://pyodide.org/)
+
+## Authors
+### Group J010
+- [Daksh Desai](mailto:24110098@iitgn.ac.in)
+- [Tanmay Janbandhu](mailto:24110365@iitgn.ac.in)
+- [Aksh Solanki](mailto:24110023@iitgn.ac.in)
+
+## Published Date: February 25, 2025
