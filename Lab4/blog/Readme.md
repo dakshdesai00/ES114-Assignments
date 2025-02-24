@@ -30,10 +30,12 @@ No actual installation is needed for PyScript. Just include PyScript in your HTM
 
 PyScript provides several key features:
 
-- **Write Python directly in HTML**: Use the `<script type="py">` tag to execute Python code.
-- **Use python only libraries in browser**: like NumPy, Pandas, and Matplotlib.
-- **External Python Files**: Load and execute `.py` scripts from external sources.
-- **Easy Integration with Web UI**: Use PyScript to manipulate the DOM and build interactive elements.
+- **Full Web Access**: Interact with the DOM and web APIs using Python, with bi-directional [FFI for JavaScript integration](https://docs.pyscript.net/2024.11.1/user-guide/ffi/).
+- **Python Interpreters**: Pyodide (standard CPython) and MicroPython (lightweight) both compiled to WebAssembly.
+- **Easy integration with python only libraries**: Can use libraries like NumPy, Matplotlib, Pandas, etc. in the browser.
+- **Mobile Support**: [MicroPython](https://pyscript.net/tech-preview/micropython/about.html) is optimized for mobile devices with fast load times.
+- **Parallel Execution**: Uses [web workers](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API) for non-blocking computations.
+- **Plugin System**: Extensible through [PolyScript](https://pyscript.github.io/polyscript/) plugins for diverse functionalities.
 
 ## Code Examples
 
@@ -277,7 +279,7 @@ PyScript can be applied in various domains, including:
    [Source Code](https://github.com/dakshdesai00/ES114-Assignments/blob/main/Lab4/applications/todo-list/index.html)  
    ![Todo List Application](todo.png)  
 
-
+### [More such awesome pyscript examples](https://docs.pyscript.net/2025.2.3/examples/)
 
 
 ## Conclusion
