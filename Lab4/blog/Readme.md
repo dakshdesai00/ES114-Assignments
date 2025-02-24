@@ -8,10 +8,10 @@ PyScript is a tool that allows you to run Python codes directly in your web brow
 
 No actual installation is needed for PyScript. Just include PyScript in your HTML file using a CDN link. This is the basic setup:
 
-1. Create an HTML file.
-2. Include the PyScript library in the `<head>` section:
+  1. Create an HTML file.
+  2. Include the PyScript library in the `<head>` section:
 
-```html
+  ```html
 <head>
   <link
     rel="stylesheet"
@@ -22,9 +22,9 @@ No actual installation is needed for PyScript. Just include PyScript in your HTM
     src="https://pyscript.net/releases/2025.2.3/core.js"
   ></script>
 </head>
-```
+  ```
 
-3. And you're ready to start writing Python code in your HTML file.
+  3. And you're ready to start writing Python code in your HTML file.
 
 ## Key Features & Explanation
 
@@ -265,7 +265,6 @@ PyScript can be applied in various domains, including:
 - **Web-Based Simulations**: Create small physics, chemistry, or mechanical simulations.
 - **Game Development**: Use Python instead of JavaScript for browser-based games.
 - **Text Processing & NLP Applications**: Web-based tools for text analysis and translation.
-- **Automated Form Processing**: Quick input validation, data manipulation, or automated responses.
 
 ### We have used PyScript to create a simple Python code editor in the browser and a Todo List application.  
 
